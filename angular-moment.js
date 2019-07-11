@@ -236,7 +236,11 @@
 						if (showFullDate) {
 							element.text(momentInstance.format(fullDateFormat));
 						} else {
-							element.text(momentInstance.from(getNow(), withoutSuffix));
+							if(momentInstance.isSameOrAfter(getNow())){
+								element.text("a few second ago")
+							}else{
+								element.text(momentInstance.from(getNow(), withoutSuffix));
+							}
 						}
 
 						if (titleFormat && setTitleTime) {
